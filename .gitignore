@@ -1,5 +1,5 @@
-# created by virtualenv automatically
 venv/
-.env/
-app/__pycache__/
-__pycache__/
+.env
+**/__pycache__/
+**/*.pyc
+create_tables.py

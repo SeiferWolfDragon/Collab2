@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light" style="background-color: gainsboro;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/ee9903c79f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <br>
+        <h1 class="title has-text-centered is-1">Blog de Noticias</h1>
+        <hr>
+    </header>
+    <div class="container">
+        <h1 class="subtitle has-text-centered is-4">Bienvenido al blog de noticias</h1>
+        <div class="has-text-centered">
+            <a href="{{ url_for('posts.listar_posts') }}" class="button is-primary">Iniciar</a>
+        </div>
+    </div>
+</body>
+</html>
