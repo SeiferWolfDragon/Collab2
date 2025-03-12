@@ -6,6 +6,23 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/ee9903c79f.js" crossorigin="anonymous"></script>
+    <style>
+        .grid_Seifer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            grid-auto-rows: 1fr; /* Todas las filas tendrán la misma altura */
+        }
+
+        .grid_Seifer .card {
+            height: 100%;
+        }
+        .grid_Seifer .card-content {
+            flex-grow: 1;
+        }
+
+
+    </style>
 </head>
   <body >
     <header>
@@ -15,7 +32,9 @@
         <hr>
     </header>
     <div class="container">
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
+
     </div>
   </body>
 </html>

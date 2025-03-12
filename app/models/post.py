@@ -1,7 +1,4 @@
-from app import db
-
-# Inicializamos SQLAlchemy
-db = SQLAlchemy()
+from app.models.db import db  # Ahora importamos db correctamente
 
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -10,6 +7,6 @@ class Post(db.Model):
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id', ondelete='SET NULL'), nullable=True)
-    
+
     def __repr__(self):
         return f'<Post {self.title}>'

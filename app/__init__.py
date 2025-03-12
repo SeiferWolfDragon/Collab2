@@ -1,28 +1,33 @@
+# app/__init__.py
 import os
-from flask import Flask, request, jsonify, render_template, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, render_template
+from dotenv import load_dotenv
+from app.models.db import db  # Importar db desde app.models.db
 
-from dotenv import load_dotenv 
-
-#Cargar las variables de entorno
+# Cargar las variables de entorno desde un archivo .env
 load_dotenv()
 
-#crear instancia
-app =  Flask(_name_)
+# Crear la instancia de la aplicación Flask
+app = Flask(__name__)
 
 # Configuración de la base de datos PostgreSQL
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+# Inicializar la base de datos
+db.init_app(app)
 
-#importar modelos para SQLAlchemy los reconozca
-from app.models import Post
+# Importar los modelos para que SQLAlchemy los reconozca
+from app.models import Post, Category  # Aquí se importan los modelos
 
-#importar y registrar los blueprints
+# Importar y registrar los blueprints
 from app.routes.post import posts_bp
+from app.routes.categorias import  categories_bp
 app.register_blueprint(posts_bp, url_prefix='/posts')
+app.register_blueprint(categories_bp, url_prefix='/categorias')
 
+# Definir una ruta para la página principal
 @app.route('/')
-def index()
-return "Hello World"
+def index():
+    return render_template('index.html')
+

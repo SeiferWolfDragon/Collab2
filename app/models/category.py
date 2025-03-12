@@ -1,15 +1,11 @@
-from app import bd
-
-# Inicializamos SQLAlchemy
-db = SQLAlchemy()
+from app.models.db import db
 
 class Category(db.Model):
     __tablename__ = 'categories'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # Se genera solo
     name = db.Column(db.String(100), nullable=False, unique=True)
-    
-    # Relación con la tabla `Post` (uno a muchos)
+
     posts = db.relationship('Post', backref='category', lazy=True)
 
     def __repr__(self):

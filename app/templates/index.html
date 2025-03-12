@@ -1,0 +1,46 @@
+<!-- templates/index.html -->
+{% extends 'posts/base.html' %}
+{% block title%} DASHBOARD CATEGORIA Y NOTICIAS {% endblock %}
+{% block content %}
+
+
+    <div class="grid_Seifer">
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <!-- Título o contenido principal -->
+                        <p class="title is-4">Administrar Publicaciones</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <!-- El contenido adicional de la tarjeta -->
+                    Da click abajo para ver y administrar las publicaciones
+                    <br>
+                    <a href="{{ url_for('posts.listar_posts') }}">Ir a posts</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <!-- Título o contenido principal -->
+                        <p class="title is-4">Administrar Categorias</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <!-- El contenido adicional de la tarjeta -->
+                    Da click abajo para ver y administrar las categorias
+                    <br>
+                    <a href="{{ url_for('categories.listar_categorias') }}">Ir a categorias</a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

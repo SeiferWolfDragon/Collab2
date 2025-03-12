@@ -1,14 +1,4 @@
-from flask import Flask
-
-# Crear una instancia de la aplicación Flask
-app = Flask(__name__)
-
-# Definir una ruta para la página principal
-@app.route('/')
-def hello_world():
-    return '¡Hola, Mundo!'
-
-# Comentario para rama dev
+from app import app  # Importamos la aplicación desde el paquete 'app'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True)  # Ejecutamos la aplicación en modo debug

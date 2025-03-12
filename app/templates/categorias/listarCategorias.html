@@ -1,0 +1,59 @@
+{% extends 'posts/base.html' %}
+
+{% block title %} Categorías {% endblock %}
+
+{% block content %}
+<div class="columns">
+    <div class="column is-offset-3 is-6">
+        <!-- Botón para agregar categoría -->
+        <a href="{{ url_for('categories.add_category') }}" class="button is-success">
+            <i class="fa-solid fa-folder-plus"></i> &nbsp; Agregar Categoría
+        </a>
+
+        <br><br>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">Categorías</p>
+                    </div>
+                </div>
+                <!-- Contenedor con scroll -->
+                <div class="category-list" style="max-height: 500px; overflow-y: auto;">
+                    {% for category in categories %}
+                        <div class="category-item {% if loop.index % 2 == 0 %}even{% else %}odd{% endif %}" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-radius: 5px;">
+                            <p>{{ category.name }}</p>
+                            <div class="buttons">
+                                <!-- Botón de editar -->
+                                <a href="{{ url_for('categories.update_category', id=category.id) }}" class="button is-small is-link is-outlined">
+                                    <i class="fa-solid fa-pen-to-square"></i> Editar
+                                </a>
+                                <!-- Botón de eliminar -->
+                                <a href="{{ url_for('categories.delete_category', id=category.id) }}" class="button is-small is-danger is-outlined">
+                                    <i class="fa-solid fa-trash"></i> Eliminar
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Estilos internos para alternar colores -->
+<style>
+    .category-item.odd {
+        background-color: #f4f4f4; /* Color de fondo para las filas impares */
+    }
+
+    .category-item.even {
+        background-color: #e0e0e0; /* Color de fondo para las filas pares */
+    }
+
+    .category-item {
+        margin-bottom: 10px; /* Espaciado entre categorías */
+    }
+</style>
+{% endblock %}
